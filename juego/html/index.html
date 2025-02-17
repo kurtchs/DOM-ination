@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/juego/css/style.css" />
+  </head>
+  <body>
+    <!-- PANTALLA DE INICIO -->
+    <div id="start-screen" class="container">
+      <h1 class="titulo">DOM-ination</h1>
+
+      <button id="start-btn">START!</button>
+    </div>
+    <!-- PANTALLA DE JUEGO -->
+    <div id="game-screen" class="container">
+      <div id="game-box"></div>
+    </div>
+    <!-- PANTALLA FINAL -->
+    <div id="game-over" class="container">
+      <img
+        id="game-over-img"
+        src="/juego/img/Game-Over_preview_rev_1.png"
+        alt="game-over-img"
+      />
+      <button id="restart-btn">CONTINUE?</button>
+      <img id="xocas" src="/juego/img/Xocas.png" alt="Game-Over" />
+    </div>
+    <script src="/juego/js/script.js"></script>
+    <script src="/juego/js/trump.js"></script>
+    <script src="/juego/js/joker.js"></script>
+  </body>
+</html>

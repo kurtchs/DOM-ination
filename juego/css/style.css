@@ -1,0 +1,71 @@
+body {
+  background-color: lightgray;
+}
+
+.titulo {
+  text-align: center;
+  background-image: url(/juego/img/bandera.jpeg);
+  background-size: cover;
+  color: black;
+  padding: 100px;
+}
+
+#start-btn {
+  color: black;
+  text-align: center;
+  height: 100px;
+  width: 200px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#restart-btn {
+  color: black;
+  text-align: center;
+  height: 100px;
+  width: 200px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#xocas {
+  margin-top: 100px;
+  margin-left: 150px;
+  height: 300px;
+  width: 400px;
+}
+
+#game-over-img {
+  height: 500px;
+  width: 800px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+#game-box {
+  background-color: gray;
+  width: 800px;
+  height: 600px;
+  position: relative;
+  /* overflow: hidden; */
+  user-select: none;
+
+  background-image: url("/juego/img/desierto.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#game-box * {
+  pointer-events: none;
+}
+
+#game-screen,
+#game-over {
+  display: none;
+}
