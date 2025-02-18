@@ -1,18 +1,10 @@
-class Joker {
+class Alejandro {
     constructor(type, positionY){
 
         this.node = document.createElement("img")
         
-        // if(type === "arriba"){
-        this.node.src = "/juego/img/mexican-joker.png"
-        //  } else if(type === "centroA"){
-        // this.node.src = "/juego/img/mexican-joker.png"
-        //  } else if (type === "centroB"){
-        // this.node.src = "/juego/img/mexican-joker.png"
-
-        //  } else if (type === "abajo"){
-        // this.node.src = "/juego/img/mexican-joker.png"
-        //  }
+        this.node.src = "/juego/img/alejandro.png"
+       
         
         gameBoxNode.append(this.node)
 
@@ -28,7 +20,7 @@ class Joker {
         this.node.style.width = `${this.w}px`
         this.node.style.height = `${this.h}px`
 
-        this.movementSpeed = 5 
+        this.movementSpeed = 4
 
         this.type = type
 
