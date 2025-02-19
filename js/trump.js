@@ -1,15 +1,15 @@
-class Bala {
- constructor(positionY){
+class Trump {
+ constructor(){
 
     this.node = document.createElement("img")
-    this.node.src = "/juego/img/bala.png"
+    this.node.src = "./img/trump.png"
 
     gameBoxNode.append(this.node)
 
     this.x = 30;
-    this.y = positionY;
-    this.w = 80;
-    this.h = 60;
+    this.y = 50;
+    this.w = 180;
+    this.h = 120;
 
     this.node.style.position ="absolute"
     this.node.style.left = `${this.x}px`

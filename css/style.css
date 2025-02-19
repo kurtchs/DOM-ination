@@ -4,7 +4,7 @@ body {
 
 .titulo {
   text-align: center;
-  background-image: url(/juego/img/bandera.jpeg);
+  background-color: aqua;
   background-size: cover;
   color: black;
   padding: 100px;
@@ -20,7 +20,8 @@ body {
 }
 
 #start-btn:hover {
-  background-color: #2980b9;
+  background-image: url("../img/bandera.jpeg");
+  background-size: cover;
   transform: scale(1.05);
 }
 
@@ -33,16 +34,9 @@ body {
   font-weight: bold;
 }
 #restart-btn:hover {
-  background-color: #03090c;
-  color: white;
+  background-image: url("../img/Xocas.png");
+  color: red;
   transform: scale(1.05);
-}
-
-#xocas {
-  margin-top: 100px;
-  margin-left: 150px;
-  height: 300px;
-  width: 400px;
 }
 
 #game-over-img {
@@ -66,7 +60,7 @@ body {
   /* overflow: hidden; */
   user-select: none;
 
-  background-image: url("/juego/img/desierto.jpg");
+  background-image: url("../img/desierto.jpg");
   background-position: center;
   background-size: cover;
 }
