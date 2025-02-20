@@ -27,8 +27,6 @@ function startGame() {
 
   trumpObj = new Trump();
 
-  // balaArr.push(balaArr)              //BALA
-
   gameIntervalId = setInterval(() => {
     gameLoop();
   }, Math.round(1000 / 60));
@@ -102,13 +100,6 @@ function alejandroDespawn() {
 //     balaArr.shift();
 //   }
 // }
-// function balaSpawn(){
-// let balaObj = new Bala ("centroB")
-// balaArrArr.push(balaObj)
-// }
-// function balaDespawn(){
-
-// }
 
 function colision() {
   jokerArr.forEach((eachJoker) => {
@@ -118,7 +109,8 @@ function colision() {
       eachJoker.y < trumpObj.y + trumpObj.h &&
       eachJoker.y + eachJoker.h > trumpObj.y
     ) {
-     
+        
+    //  lives()
       gameOver();
     }
   });
@@ -193,6 +185,27 @@ function restarGame() {
   //     gameLoop();
   //   }, Math.round(1000 / 60));
 }
+
+// function lives() {
+
+//     if (true){
+//         document.querySelector("corazon").style.visibility = "visible"
+//         document.querySelector("corazon").style.visibility = "visible"
+//         document.querySelector("corazon").style.visibility = "hidden"
+//     }
+//     if (true){
+//         document.querySelector("corazon").style.visibility = "visible"
+//         document.querySelector("corazon").style.visibility = "hidden"
+//         document.querySelector("corazon").style.visibility = "hidden"
+//     }
+//     if (true){
+//         document.querySelector("corazon").style.visibility = "hidden"
+//         document.querySelector("corazon").style.visibility = "hidden"
+//         document.querySelector("corazon").style.visibility = "hidden"
+//     } 
+    
+    
+// }
 
 //Event listeners
 
