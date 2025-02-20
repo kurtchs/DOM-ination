@@ -64,7 +64,7 @@ body {
   background-position: center;
   background-size: cover;
 }
-#corazon {
+#corazon img {
   position: absolute;
   top: 5px;
   left: 40px;
@@ -72,7 +72,7 @@ body {
   height: 30px;
 }
 
-#corazon2 {
+#corazon2 img {
   position: absolute;
   top: 5px;
   left: 70px;
@@ -80,7 +80,7 @@ body {
   height: 30px;
 }
 
-#corazon3 {
+#corazon3 img {
   position: absolute;
   top: 5px;
   left: 100px;

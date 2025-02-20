@@ -9,6 +9,7 @@ const restartBtnNode = document.querySelector("#restart-btn");
 
 // game box
 const gameBoxNode = document.querySelector("#game-box");
+// const vidaRestante = document.querySelectorAll(".heart")
 
 // Variables Globales
 let trumpObj = null;
@@ -61,7 +62,6 @@ function gameLoop() {
   alejandroDespawn();
   balaColisionJoker();
   balaColisionAlejandro()
-  actualizarVidas()
   //   balaDespawn()
 }
 
@@ -208,7 +208,16 @@ function restarGame() {
   jokerSpawnIntervalId = null;
   balaArr = [];
   vidas = 3
-  
+// tenemos que hacer que vuelvan aparecer los 3 corazones
+console.log("cualquier cosa")
+if(vidas === 3){
+    document.querySelector("#corazon").style.visibility = "visible"
+    document.querySelector("#corazon2").style.visibility = "visible"
+    document.querySelector("#corazon3").style.visibility = "visible"
+    
+}
+
+
 
   //   gameIntervalId = setInterval(() => {
   //     gameLoop();
@@ -229,9 +238,9 @@ function actualizarVidas() {
     }
 
     if (vidas === 3){
-        document.querySelector("#corazon").visibility = "visible"
-        document.querySelector("#corazon2").visibility = "visible"
-        document.querySelector("#corazon3").visibility = "visible"
+        document.querySelector("#corazon").style.visibility = "visible"
+        document.querySelector("#corazon2").style.visibility = "visible"
+        document.querySelector("#corazon3").style.visibility = "visible"
     }
     if (vidas === 2){
         document.querySelector("#corazon").style.visibility = "visible"
