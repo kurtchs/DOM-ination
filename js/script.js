@@ -19,6 +19,7 @@ let alejandroArr = [];
 let gameIntervalId = null;
 let jokerSpawnIntervalId = null;
 let balaArr = [];
+let vidas =  3
 
 //Funciones
 function startGame() {
@@ -29,6 +30,7 @@ function startGame() {
 
   gameIntervalId = setInterval(() => {
     gameLoop();
+    console.log("patata")
   }, Math.round(1000 / 60));
 
   jokerSpawnIntervalId = setInterval(() => {
@@ -55,9 +57,11 @@ function gameLoop() {
 
   jokerDespawn();
   colision();
+  colisionAlejandro()
   alejandroDespawn();
   balaColisionJoker();
   balaColisionAlejandro()
+  actualizarVidas()
   //   balaDespawn()
 }
 
@@ -66,33 +70,37 @@ function jokerSpawn() {
 
   let jokerObj1 = new Joker("arriba", randomPosition);
   jokerArr.push(jokerObj1);
-  // let alejandroObj = new Joker("centroA", randomPosition)
-  // jokerArr.push(alejandroObj)
-  // // let jokerObj3 = new Joker("centroB", randomPosition)
-  // // jokerArr.push(jokerObj3)
-  // // let jokerObj4 = new Joker("abajo", randomPosition)
-  // // jokerArr.push(jokerObj4)
+//   let jokerObJ2 = new Joker("centroA", randomPosition)
+//   jokerArr.push(jokerObJ2)
+//   let jokerObj3 = new Joker("centroB", randomPosition)
+//   jokerArr.push(jokerObj3)
+//   let jokerObj4 = new Joker("abajo", randomPosition)
+//   jokerArr.push(jokerObj4)
+//   console.log(jokerArr.length)
 }
 function jokerDespawn() {
-  if (jokerArr.length > 0 && jokerArr[0].x < 0 - jokerArr[0].w) {
-    jokerArr[0].node.remove();
+  if (jokerArr.length > 0 && jokerArr[0].x < (0 - jokerArr[0].w)) {
+    jokerArr[0].node.remove(); //este remove lo que hace es remover el nodo como parte visual del juego
 
-    jokerArr.shift();
+    jokerArr.shift();// remueve el primer valor del array
   }
 }
 
 function alejandroSpawn() {
+randomPosition = Math.floor(Math.random() * 500);
   let alejandroObj = new Alejandro("centroA", randomPosition);
   alejandroArr.push(alejandroObj);
 }
 
 function alejandroDespawn() {
-  if (alejandroArr.length > 0 && alejandroArr[0].x < 0 - alejandroArr[0].w) {
+  if (alejandroArr.length > 0 && alejandroArr[0].x < (0 - alejandroArr[0].w)) {
     alejandroArr[0].node.remove();
 
     alejandroArr.shift();
   }
 }
+
+
 // function balaDespawn() {
 //   if (balaArr.length > 0 && balaArr[0].x < 0 - balaArr[0].w) {
 //     balaArr[0].node.remove();
@@ -102,16 +110,35 @@ function alejandroDespawn() {
 // }
 
 function colision() {
-  jokerArr.forEach((eachJoker) => {
+  jokerArr.forEach((eachJoker, indiceJoker) => {
     if (
       eachJoker.x < trumpObj.x + trumpObj.w &&
       eachJoker.x + eachJoker.w > trumpObj.x &&
       eachJoker.y < trumpObj.y + trumpObj.h &&
       eachJoker.y + eachJoker.h > trumpObj.y
     ) {
+         eachJoker.node.remove();
+        jokerArr.splice(indiceJoker, 1);
         
-    //  lives()
-      gameOver();
+         actualizarVidas()
+        // gameOver();
+    }
+  });
+}
+
+function colisionAlejandro(){
+    alejandroArr.forEach((eachAlejandro, indiceAlejandro) => {
+    if (
+      eachAlejandro.x < trumpObj.x + trumpObj.w &&
+      eachAlejandro.x + eachAlejandro.w > trumpObj.x &&
+      eachAlejandro.y < trumpObj.y + trumpObj.h &&
+      eachAlejandro.y + eachAlejandro.h > trumpObj.y
+    ) {
+         eachAlejandro.node.remove();
+        alejandroArr.splice(indiceAlejandro, 1);
+      
+         actualizarVidas()
+    
     }
   });
 }
@@ -180,32 +207,50 @@ function restarGame() {
   gameIntervalId = null;
   jokerSpawnIntervalId = null;
   balaArr = [];
+  vidas = 3
+  
 
   //   gameIntervalId = setInterval(() => {
   //     gameLoop();
   //   }, Math.round(1000 / 60));
 }
 
-// function lives() {
+function actualizarVidas() { 
+    
+    //deberia restar vidas
+    vidas--
+    console.log( vidas)
+    //deberia actualizar los corazones
 
-//     if (true){
-//         document.querySelector("corazon").style.visibility = "visible"
-//         document.querySelector("corazon").style.visibility = "visible"
-//         document.querySelector("corazon").style.visibility = "hidden"
-//     }
-//     if (true){
-//         document.querySelector("corazon").style.visibility = "visible"
-//         document.querySelector("corazon").style.visibility = "hidden"
-//         document.querySelector("corazon").style.visibility = "hidden"
-//     }
-//     if (true){
-//         document.querySelector("corazon").style.visibility = "hidden"
-//         document.querySelector("corazon").style.visibility = "hidden"
-//         document.querySelector("corazon").style.visibility = "hidden"
-//     } 
+
+    //cuando se pierden las 3 vidas game over
+    if(vidas === 0) {
+        gameOver()
+    }
+
+    if (vidas === 3){
+        document.querySelector("#corazon").visibility = "visible"
+        document.querySelector("#corazon2").visibility = "visible"
+        document.querySelector("#corazon3").visibility = "visible"
+    }
+    if (vidas === 2){
+        document.querySelector("#corazon").style.visibility = "visible"
+        document.querySelector("#corazon2").style.visibility = "visible"
+        document.querySelector("#corazon3").style.visibility = "hidden"
+    }
+    if (vidas === 1){
+        document.querySelector("#corazon").style.visibility = "visible"
+        document.querySelector("#corazon2").style.visibility = "hidden"
+        document.querySelector("#corazon3").style.visibility = "hidden"
+    }
+    // if (){
+    //     document.querySelector("#corazon").style.visibility = "hidden"
+    //     document.querySelector("#corazon2").style.visibility = "hidden"
+    //     document.querySelector("#corazon3").style.visibility = "hidden"
+    // } 
     
     
-// }
+}
 
 //Event listeners
 
