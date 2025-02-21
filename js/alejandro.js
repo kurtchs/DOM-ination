@@ -20,7 +20,7 @@ class Alejandro {
         this.node.style.width = `${this.w}px`
         this.node.style.height = `${this.h}px`
 
-        this.movementSpeed = 7
+        this.movementSpeed = 9
 
         this.type = type
 

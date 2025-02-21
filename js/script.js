@@ -39,7 +39,6 @@ function startGame() {
 
   gameIntervalId = setInterval(() => {
     gameLoop();
-    console.log("patata")
   }, Math.round(1000 / 60));
 
   jokerSpawnIntervalId = setInterval(() => {
@@ -247,7 +246,7 @@ function gameOver() {
 
   gameScreenNode.style.display = "none";
   gameOverScreenNode.style.display = "flex";
-  musicGameOver()
+  // musicGameOver()
 }
 
 function restarGame() {
@@ -268,6 +267,7 @@ function restarGame() {
   balaArr = [];
   vidas = 3
   kills = 0
+  killScreenNode.innerText = kills 
 // tenemos que hacer que vuelvan aparecer los 3 corazones
 
 if(vidas === 3){
@@ -282,6 +282,30 @@ if(vidas === 3){
   //   gameIntervalId = setInterval(() => {
   //     gameLoop();
   //   }, Math.round(1000 / 60));
+}
+
+function aumentoVidas() {
+  vidas++;
+  console.log(vidas);
+
+  if (vidas === 1) {
+    document.querySelector("#corazon").style.visibility = "visible";
+    document.querySelector("#corazon2").style.visibility = "hidden";
+    document.querySelector("#corazon3").style.visibility = "hidden";
+    
+  }
+  if (vidas === 2) {
+    document.querySelector("#corazon").style.visibility = "visible";
+    document.querySelector("#corazon2").style.visibility = "visible";
+    document.querySelector("#corazon3").style.visibility = "hidden";
+    "visible";
+  }
+  if (vidas === 3) {
+    document.querySelector("#corazon").style.visibility = "visible";
+    document.querySelector("#corazon2").style.visibility = "visible";
+    document.querySelector("#corazon3").style.visibility = "visible";
+   
+  }
 }
 
 function actualizarVidas() { 
@@ -312,10 +336,9 @@ function actualizarVidas() {
     
 }
 function actualizarKills(){
-    kills++
+    kills++ 
     console.log(kills)
-
-    killScreenNode.innerText = kills
+    killScreenNode.innerText = kills //modifica el el valor de las kills que ve el usuario en la pagina
 }
 
 // function startMusic(){
@@ -351,7 +374,7 @@ window.addEventListener("keydown", (event) => {
     let balaObj = new Bala(trumpObj.y);
 
     balaArr.push(balaObj);
-    console.log(balaArr);
+
   }
 });
 

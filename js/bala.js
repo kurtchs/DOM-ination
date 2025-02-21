@@ -6,8 +6,8 @@ class Bala {
 
     gameBoxNode.append(this.node)
 
-    this.x = 50;
-    this.y = positionY;
+    this.x = 175;
+    this.y = positionY + 60;
     this.w = 40;
     this.h = 30;
 

@@ -7,15 +7,32 @@ body {
   color: black;
 }
 
-#dom {
+#logo {
+  height: 350px;
+  width: 400px;
+}
+
+#ins {
   color: blue;
 }
 
-#ina {
+#truc {
   color: white;
 }
 
-#tion {
+#tions {
+  color: red;
+}
+
+#space {
+  color: blue;
+}
+
+#up {
+  color: white;
+}
+
+#down {
   color: red;
 }
 
