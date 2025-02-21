@@ -3,7 +3,7 @@ class Joker {
 
         this.node = document.createElement("img")
         
-        // if(type === "arriba"){
+        
         this.node.src = "./img/mexican-joker.png"
         //  } else if(type === "centroA"){
         // this.node.src = "/juego/img/mexican-joker.png"

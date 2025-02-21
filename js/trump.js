@@ -21,13 +21,7 @@ class Trump {
 
 
  }
-//  objectLimits (){
-//     if((this.y + this.h) <= gameBoxNode.offsetHeight){
-//         this.y -= this.jump
-//         this.node.style.top = `${this.y}px`
 
-//     }
-//  }
 
  jumpDown(){
     if((this.y + this.h) <= gameBoxNode.offsetHeight){

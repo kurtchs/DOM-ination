@@ -9,30 +9,36 @@
   <body>
     <!-- PANTALLA DE INICIO -->
     <div id="start-screen" class="container">
-      <h1 class="titulo">DOM-ination</h1>
+      <h1 class="titulo">
+        <span id="dom">DOM</span><span id="ina">-ina</span
+        ><span id="tion">tion</span>
+      </h1>
 
       <button id="start-btn">START!</button>
     </div>
     <!-- PANTALLA DE JUEGO -->
     <div id="game-screen" class="container">
-      <div id="corazon">
-        <img class="heart" src="./img/corazon.png" alt="corazon" />
+      <div>
+        <h1 id="kills">KILLS</h1>
+        <h1 id="kills-points">0</h1>
       </div>
-      <div id="corazon2">
-        <img class="heart" src="./img/corazon.png" alt="corazon2" />
+      <div>
+        <img id="corazon" src="./img/corazon.png" alt="corazon" />
+        <img class="kurt" src="./img/kurt.png" alt="kurt" />
       </div>
-      <div id="corazon3">
-        <img class="heart" src="./img/corazon.png" alt="corazon3" />
+      <div>
+        <img id="corazon2" src="./img/corazon.png" alt="corazon2" />
       </div>
+      <div>
+        <img id="corazon3" src="./img/corazon.png" alt="corazon3" />
+      </div>
+
       <div id="game-box"></div>
     </div>
+
     <!-- PANTALLA FINAL -->
     <div id="game-over" class="container">
-      <img
-        id="game-over-img"
-        src="./img/Game-Over_preview_rev_1.png"
-        alt="game-over-img"
-      />
+      <img id="game-over-img" src="./img/game-over.png" alt="game-over-img" />
       <button id="restart-btn">CONTINUE?</button>
     </div>
     <script src="./js/script.js"></script>
@@ -40,5 +46,6 @@
     <script src="./js/joker.js"></script>
     <script src="./js/alejandro.js"></script>
     <script src="./js/bala.js"></script>
+    <script src="./js/putin.js"></script>
   </body>
 </html>

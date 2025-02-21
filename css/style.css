@@ -3,11 +3,20 @@ body {
 }
 
 .titulo {
-  text-align: center;
-  background-color: aqua;
   background-size: cover;
   color: black;
-  padding: 100px;
+}
+
+#dom {
+  color: blue;
+}
+
+#ina {
+  color: white;
+}
+
+#tion {
+  color: red;
 }
 
 #start-btn {
@@ -26,13 +35,15 @@ body {
 }
 
 #restart-btn {
-  color: black;
+  color: white;
+  background-color: white;
   text-align: center;
   height: 100px;
   width: 200px;
   border-radius: 10px;
   font-weight: bold;
 }
+
 #restart-btn:hover {
   background-image: url("../img/Xocas.png");
   color: red;
@@ -42,14 +53,22 @@ body {
 #game-over-img {
   height: 500px;
   width: 800px;
+  padding-left: 160px;
 }
 
 .container {
+  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 800px;
+  height: 600px;
   margin: 50px;
+}
+
+#game-screen {
+  height: 700px;
 }
 
 #game-box {
@@ -64,26 +83,45 @@ body {
   background-position: center;
   background-size: cover;
 }
-#corazon img {
+
+#kills {
   position: absolute;
-  top: 5px;
-  left: 40px;
-  width: 30px;
-  height: 30px;
+  color: rgba(128, 32, 32, 0.926);
+  top: 40px;
+  left: 380px;
+  width: 100px;
+  height: 40px;
 }
 
-#corazon2 img {
+#kills-points {
   position: absolute;
-  top: 5px;
+  color: rgba(128, 32, 32, 0.926);
+  top: 40px;
+  left: 500px;
+  width: 100px;
+  height: 40px;
+}
+
+#corazon {
+  position: absolute;
+  top: 65px;
   left: 70px;
   width: 30px;
   height: 30px;
 }
 
-#corazon3 img {
+#corazon2 {
   position: absolute;
-  top: 5px;
+  top: 65px;
   left: 100px;
+  width: 30px;
+  height: 30px;
+}
+
+#corazon3 {
+  position: absolute;
+  top: 65px;
+  left: 130px;
   width: 30px;
   height: 30px;
 }

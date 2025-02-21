@@ -1,9 +1,8 @@
-// test push
-
 // pantallas
 const startScreenNode = document.querySelector("#start-screen");
 const gameScreenNode = document.querySelector("#game-screen");
 const gameOverScreenNode = document.querySelector("#game-over");
+const killScreenNode = document.querySelector("#kills-points")
 
 // botones
 const startBtnNode = document.querySelector("#start-btn");
@@ -11,18 +10,25 @@ const restartBtnNode = document.querySelector("#restart-btn");
 
 // game box
 const gameBoxNode = document.querySelector("#game-box");
-// const vidaRestante = document.querySelectorAll(".heart")
+
+// // Musica
+// const song = new Audio("../music/song.mp3")
+// const eagleSound = new Audio("../music/USA.mp3")
 
 // Variables Globales
 let trumpObj = null;
 
 let jokerArr = [];
 let alejandroArr = [];
+let putinArr = [];
 
 let gameIntervalId = null;
 let jokerSpawnIntervalId = null;
+let alejandroSpawnIntervalId = null;
+let PutinSpawnIntervalId = null;
 let balaArr = [];
-let vidas =  3
+let vidas = 3;
+let kills = 0
 
 //Funciones
 function startGame() {
@@ -43,6 +49,13 @@ function startGame() {
   alejandroSpawnIntervalId = setInterval(() => {
     alejandroSpawn();
   }, 2200);
+
+  PutinSpawnIntervalId = setInterval(() => {
+    putinSpawn();
+  }, 7000);
+
+  // startMusic()
+  kills = 0
 }
 
 function gameLoop() {
@@ -58,12 +71,18 @@ function gameLoop() {
     eachBala.fireMovement();
   });
 
+  putinArr.forEach((eachPutin) => {
+    eachPutin.movement();
+  });
+
   jokerDespawn();
   colision();
   colisionAlejandro()
   alejandroDespawn();
   balaColisionJoker();
   balaColisionAlejandro()
+  putinDespawn();
+  colisionPutin()
   //   balaDespawn()
 }
 
@@ -102,6 +121,21 @@ function alejandroDespawn() {
   }
 }
 
+function putinSpawn() {
+  randomPosition = Math.floor(Math.random() * 500);
+
+  let putinObj = new Putin("arriba", randomPosition);
+  putinArr.push(putinObj);
+}
+
+function putinDespawn() {
+  if (putinArr.length > 0 && putinArr[0].x < 0 - putinArr[0].w) {
+    putinArr[0].node.remove();
+
+    putinArr.shift();
+  }
+}
+
 
 // function balaDespawn() {
 //   if (balaArr.length > 0 && balaArr[0].x < 0 - balaArr[0].w) {
@@ -123,7 +157,7 @@ function colision() {
         jokerArr.splice(indiceJoker, 1);
         
          actualizarVidas()
-        // gameOver();
+    
     }
   });
 }
@@ -145,6 +179,22 @@ function colisionAlejandro(){
   });
 }
 
+function colisionPutin() {
+  putinArr.forEach((eachPutin, indicePutin) => {
+    if (
+      eachPutin.x < trumpObj.x + trumpObj.w &&
+      eachPutin.x + eachPutin.w > trumpObj.x &&
+      eachPutin.y < trumpObj.y + trumpObj.h &&
+      eachPutin.y + eachPutin.h > trumpObj.y
+    ) {
+      eachPutin.node.remove();
+      putinArr.splice(indicePutin, 1);
+
+      aumentoVidas();
+    }
+  });
+}
+
 function balaColisionJoker() {
   jokerArr.forEach((eachJoker, indiceJoker) => {
     balaArr.forEach((eachBala, indiceBala) => {
@@ -159,6 +209,8 @@ function balaColisionJoker() {
 
         eachBala.node.remove();
         balaArr.splice(indiceBala, 1);
+
+        actualizarKills()
       }
     });
   });
@@ -178,6 +230,7 @@ function balaColisionAlejandro() {
 
         eachBala.node.remove();
         balaArr.splice(indiceBala, 1);
+        actualizarKills()
       }
     });
   });
@@ -189,11 +242,12 @@ function gameOver() {
   clearInterval(gameIntervalId);
   clearInterval(jokerSpawnIntervalId);
   clearInterval(alejandroSpawnIntervalId);
-
-  // faltan intervalos de putin
+  clearInterval(PutinSpawnIntervalId);
+  
 
   gameScreenNode.style.display = "none";
   gameOverScreenNode.style.display = "flex";
+  musicGameOver()
 }
 
 function restarGame() {
@@ -205,13 +259,17 @@ function restarGame() {
 
   jokerArr = [];
   alejandroArr = [];
+  putinArr = [];
 
   gameIntervalId = null;
   jokerSpawnIntervalId = null;
+  alejandroSpawnIntervalId = null;
+  PutinSpawnIntervalId = null;
   balaArr = [];
   vidas = 3
+  kills = 0
 // tenemos que hacer que vuelvan aparecer los 3 corazones
-console.log("cualquier cosa")
+
 if(vidas === 3){
     document.querySelector("#corazon").style.visibility = "visible"
     document.querySelector("#corazon2").style.visibility = "visible"
@@ -230,10 +288,7 @@ function actualizarVidas() {
     
     //deberia restar vidas
     vidas--
-    console.log( vidas)
-    //deberia actualizar los corazones
-
-
+   
     //cuando se pierden las 3 vidas game over
     if(vidas === 0) {
         gameOver()
@@ -254,14 +309,28 @@ function actualizarVidas() {
         document.querySelector("#corazon2").style.visibility = "hidden"
         document.querySelector("#corazon3").style.visibility = "hidden"
     }
-    // if (){
-    //     document.querySelector("#corazon").style.visibility = "hidden"
-    //     document.querySelector("#corazon2").style.visibility = "hidden"
-    //     document.querySelector("#corazon3").style.visibility = "hidden"
-    // } 
-    
     
 }
+function actualizarKills(){
+    kills++
+    console.log(kills)
+
+    killScreenNode.innerText = kills
+}
+
+// function startMusic(){
+//     eagleSound.pause()
+//     eagleSound.currentTime = 0
+//     song.play()
+//     song.volume = 0.1;
+
+// }
+// function musicGameOver(){
+//     song.pause()
+//     song.currentTime = 0
+//     eagleSound.play()
+//     eagleSound.volume = 0.1
+// }
 
 //Event listeners
 
@@ -279,9 +348,7 @@ window.addEventListener("keydown", (event) => {
 
 window.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
-    let balaObj = new Bala(trumpObj.y); //  estoy creando un objeto y lo estoy metiendo en una variable de tipo objeto
-
-    //añadir bala en el array
+    let balaObj = new Bala(trumpObj.y);
 
     balaArr.push(balaObj);
     console.log(balaArr);
