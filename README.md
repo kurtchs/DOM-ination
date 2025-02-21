@@ -1,6 +1,6 @@
 # Description
 
-Kraken Brigade is a game where players try to defend a fort from the impending attack of sea creatures. The game ends when enough tentacles are stacked in front of the fort wall at the bottom of the screen. After the game ends, a score is calculated based on the amount of tentacles destroyed and the amount of time the game lasted.
+Dom-ination es un juego inspirado en la serie South Park, que parodia a un personaje llamado Sr. Garrison. En el juego, este personaje satiriza a cierto expresidente de EE.UU. y debe disparar a los enemigos que se le acerquen; si lo tocan, pierde vidas. El jugador puede mover al personaje hacia arriba y abajo usando las flechas del teclado correspondientes. El juego termina cuando se quedan sin vidas, pero si aparece Putin montado en su oso, puede salvarte y devolverte una vida.
 
 # Main Functionalities
 
